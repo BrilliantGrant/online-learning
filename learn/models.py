@@ -25,15 +25,24 @@ class Course(models.Model):
     upgraded = models.BooleanField(default=False)
     stripe_id = models.CharField(max_length=255, blank=True)
     category = models.CharField(max_length = 100)
+    course = models.ForeignKey('Category', related_name='modules',default=1)
 
     class Meta:
         ordering = ('-created',)
+
+
+
+    @classmethod
+    def search_by_category(cls, search_term):
+    	category = cls.objects.filter(course__title__icontains=search_term)
+    	return category
+
+
 
     def __str__(self):
         return self.title
 
 class Category(models.Model):
-    course = models.ForeignKey(Course, related_name='modules')
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True)
     category_name = models.CharField(max_length=30)
@@ -49,9 +58,3 @@ class Category(models.Model):
 
     def delete_category(self):
         self.delete()
-
-
-    @classmethod
-    def search_by_category(cls, search_term):
-    	category = cls.objects.filter(category_name__icontains=search_term)
-    	return category
