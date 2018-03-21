@@ -1,0 +1,39 @@
+
+{% extends "base.html" %}
+{% block content %}
+{{block.super}}
+
+
+<h3>technology</h3>
+<figure>
+<img src="http://assets.nydailynews.com/polopoly_fs/1.1542852.1386652602!/img/httpImage/image.jpg_gen/derivatives/article_750/178891861.jpg" alt="" />
+<figcaption><a href="/">
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse corporis nihil at sed exercitationem labore, aperiam maxime magni molestias libero inventore adipisci distinctio pariatur odit, eveniet, nulla quae, explicabo ipsa.</a></figcaption></figure>
+
+<style >
+	figure {
+  background: red;
+ overflow: hidden;
+  height: 400px;
+  width: 300px;
+}
+/* Start Frame */
+figcaption {
+  background: rgba(255,255,255,.65);
+  opacity: .75;
+  margin-top: -100px;
+  transition: margin-top 3s;
+  
+}
+/* End Frame */
+figure:hover figcaption{
+  margin-top: -150px;
+}
+</style>
+
+
+
+{% endblock %}
+
+
+

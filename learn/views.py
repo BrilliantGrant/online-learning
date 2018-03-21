@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import Course, Subject
+from .models import Course, Subject,Category
 from django.views.generic.base import TemplateResponseMixin,View
 # Create your views here.
 
@@ -11,24 +11,6 @@ from django.http  import HttpResponse
 def index(request):
     title = 'E-learning'
     return render(request, 'index.html', {"title":title})
-
-
-def search_results(request):
-    if 'course' in request.GET and request.GET["course"]:
-        search_term = request.GET.get("course")
-        searched_profiles = Profile.search_profile(search_term)
-        message = f"{search_term}"
-
-        return render(request, 'search_course.html',{"message":message,"courses": searched_courses})
-
-    else:
-        message = "You haven't searched for any term"
-        return render(request, 'search_course.html',{"message":message})
-
-
-
-
-
 
 class CourseListView(TemplateResponseMixin, View):
     model = Course
@@ -52,3 +34,35 @@ def about(request):
       return render(request, 'about.html', {"title":title})
 
 
+
+@login_required(login_url='/accounts/login/')
+def business(request):
+      title = 'Business'
+      
+      return render(request, 'all/business.html', {"title":title})
+
+@login_required(login_url='/accounts/login/')
+def language(request):
+      title = 'Language'
+      
+      return render(request, 'all/language.html', {"title":title})
+
+@login_required(login_url='/accounts/login/')
+def technology(request):
+      title = 'Tech'
+      
+      return render(request, 'all/technology.html', {"title":title})
+
+
+
+def search_results(request):
+    if 'category' in request.GET and request.GET["category"]:
+        search_term = request.GET.get("category")
+        searched_categories = Category.search_by_category(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'search_category.html',{"message":message,"categories": searched_categories})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'search_category.html',{"message":message})

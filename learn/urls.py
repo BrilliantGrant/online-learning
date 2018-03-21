@@ -8,7 +8,11 @@ urlpatterns=[
     url(r'^about/',views.about,name = 'about'),
     url(r'^search/', views.search_results, name='search_results'),
     url(r'^$', views.CourseListView.as_view(), name='course_list'),
-    # url(r'^module/(?P<module_id>\d+)/$', views.ModuleContentListView.as_view(), name='module_content_list'),
+    url(r'^business/', views.business, name='business'),
+    url(r'^language/', views.language, name='language'),
+    url(r'^technology/', views.technology, name='technology'),
+    
+    
 ]
 
 if settings.DEBUG:

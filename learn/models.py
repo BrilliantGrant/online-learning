@@ -24,6 +24,7 @@ class Course(models.Model):
     students = models.ManyToManyField(User, related_name='courses_joined', blank=True)
     upgraded = models.BooleanField(default=False)
     stripe_id = models.CharField(max_length=255, blank=True)
+    category = models.CharField(max_length = 100)
 
     class Meta:
         ordering = ('-created',)
@@ -36,6 +37,7 @@ class Category(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True)
     category_name = models.CharField(max_length=30)
+    pic = models.ImageField(upload_to = "pics/",null = True)
 
 
     def __str__(self):
@@ -47,3 +49,9 @@ class Category(models.Model):
 
     def delete_category(self):
         self.delete()
+
+
+    @classmethod
+    def search_by_category(cls, search_term):
+    	category = cls.objects.filter(category_name__icontains=search_term)
+    	return category
