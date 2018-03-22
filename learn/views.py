@@ -1,7 +1,20 @@
 from django.shortcuts import render, redirect, get_object_or_404
+
 from django.contrib.auth.decorators import login_required
-from .models import Course, Subject,Category
+from django.contrib import contenttypes
+from .models import Course, Subject,Category,Post
 from django.views.generic.base import TemplateResponseMixin,View
+import datetime
+# from django.template import render
+from django.http import HttpResponse
+from django.views.generic import View
+from django.template.loader import get_template
+from .utils import render_to_pdf 
+from . forms import PostForm
+
+
+
+
 # Create your views here.
 
 from django.http  import HttpResponse
@@ -53,6 +66,12 @@ def technology(request):
       
       return render(request, 'all/technology.html', {"title":title})
 
+@login_required(login_url='/accounts/login/')
+def contact(request):
+      title = 'Contact'
+      
+      return render(request, 'all/contact.html', {"title":title})
+
 
 
 def search_results(request):
@@ -67,4 +86,38 @@ def search_results(request):
         message = "You haven't searched for any term"
         return render(request, 'search_category.html',{"message":message})
 
-        
+
+class GeneratePDF(View):
+     def get(self, request, *args, **kwargs):
+         data = {
+              'today': datetime.date.today(),
+              'amount': 39.99,
+             'customer_name': 'Cooper Mann',
+             'order_id': 1233434,
+         }
+         html = template.render(context)
+         pdf = render_to_pdf('pdf/invoice.html', data)
+         return HttpResponse(pdf, content_type='application/pdf')
+
+
+
+@login_required(login_url='/accounts/login/')
+def post(request):
+    post = Post()
+    return render(request,'post.html')
+
+
+
+@login_required(login_url='/accounts/login/')
+def new_post(request):
+
+    current_user = request.user
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.save()
+            return redirect('index') 
+    else:
+        form = PostForm()
+    return render(request, 'new_post.html', {"form": form})

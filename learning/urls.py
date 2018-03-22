@@ -17,6 +17,9 @@ from django.conf.urls import url,include
 from django.contrib import admin
 from django.contrib.auth import views
 from django.contrib.auth import views as auth_views
+from learn.views import GeneratePDF
+
+
 
 
 urlpatterns = [
@@ -24,6 +27,9 @@ urlpatterns = [
     url(r'^accounts/', include('registration.backends.simple.urls')),
     url(r'^logout/$', views.logout, {"next_page": '/'}),
     url(r'^login/$', auth_views.login, name='login'),
-    url(r'^',include('learn.urls'))
+    url(r'^',include('learn.urls')),
+    url(r'^pdf/$',GeneratePDF.as_view(),name="generate"),
+    
+
 
 ]

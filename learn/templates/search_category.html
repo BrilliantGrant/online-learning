@@ -1,40 +1,80 @@
 
 {%extends 'base.html'%} 
 {% block content %}
-<div class="container" style="margin-top: 200px">
+<div class="container" style="margin-top: 50px">
 
   <div class="row">
     {% if courses %}
-      <h4 style="margin-top: -100px">Found  of searched term {{message}}</h4>
+      <h4 style="margin-top: -20px">Found  of searched term {{message}}</h4>
     {% else %}
       <h2> Found 0 courses for the search term {{message}}</h2>
     {% endif %}
 
   </div>
 
-  <div class="row">
 
-  
-      
-          <h1><img src="{{course.pic.url}}"></h1>
-      </div>
 
-  </div>
-</div>
-{% if courses %}
+<html>
+
+<head>
+  <!-- Material Design Lite -->
+  <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
+  <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.blue-orange.min.css">
+  <!-- Material Design icon font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body>
+  <!-- Square card -->
+  {% if courses %}
     {% for course in courses %}
-    <div class="row">
-<div class="col-md-4"><br>
-<figure>
-<img src="{{course.pic.url}}" style="width: 400px; height: 300px; position: relative;" alt="" />
-<figcaption><a href="/">
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse corporis nihil at sed exercitationem labore, aperiam maxime magni molestias libero inventore adipisci distinctio pariatur odit, eveniet, nulla quae, explicabo ipsa.</a></figcaption></figure>
-</div>
-
-    {% endfor %}
+  <div class="mdl-card mdl-shadow--2dp demo-card-square">
+    <div class="mdl-card__title mdl-card--expand">
+      <h2 class="mdl-card__title-text"><img src="{{course.pic.url}}" style="width: 380px; height: 340px" ;></h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+      Welcome to online learning.View different categories of courses
+    </div>
+    <div class="mdl-card__actions mdl-card--border">
+      <a class="mdl-button mdl-button--accent mdl-js-button mdl-js-ripple-effect">
+          View
+        </a>
+    </div>
+  </div>
+   {% endfor %}
   {% endif %}
+  
+</body>
+
+</html>
 
 <style >
+  .demo-card-square.mdl-card {
+    width: 320px;
+    height: 320px;
+    float: left;
+    margin: 1rem;
+    position: relative;
+  }
+  
+  .demo-card-square.mdl-card:hover {
+    box-shadow: 0 8px 10px 1px rgba(0, 0, 0, .14), 0 3px 14px 2px rgba(0, 0, 0, .12), 0 5px 5px -3px rgba(0, 0, 0, .2);
+  }
+  
+  .demo-card-square > .mdl-card__title {
+    color: #fff;
+    background: #03a9f4;
+  }
+  
+  .demo-card-square > .mdl-card__accent {
+    background: #ff9800;
+  }
+  
+  body {
+    padding: 20px;
+    background: #fafafa;
+    position: relative;
+  }
   figure {
   background: red;
  overflow: hidden;

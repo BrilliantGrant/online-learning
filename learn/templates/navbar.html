@@ -3,7 +3,7 @@
 
   <div class="nav">
 
-  <h1 title="E-learning" style="margin-top: -1px">
+  <a><h1 title="E-learning" style="margin-top: -1px"></a>
     <span class="span">E-</span>
     <span>l</span>
     <span>e</span>
@@ -14,6 +14,7 @@
    
 
   </h1>
+
  <!-- Adding a search form  -->
       <div class="col-sm-4 col-md-4 navbar-right"  ">
 
@@ -31,28 +32,37 @@
   <ul >
     <div class="row" style="margin-top: -30px;">
 <div class="col-md-3">
-    <li><a href="/">About</a></li>
+    <li><a href="/">Dashboard</a></li>
   </div>
   <div class="row">
 <div class="col-md-3">
-    <li><a href="/">Dashboard</a>
+    <li><a href="{% url 'contact' %}">Contact</a>
       
     </li>
   </div>
   <div class="row">
-<div class="col-md-3">
-    <li><a href="#">Account</a>
-      <div class="child">
-        <ul>
+<div class="col-md-3" style="margin-top: -13px;">
+   <li class="dropdown">
+                <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false" style="background-color: black; color: white">Category
+                          <span class="caret"></span>
+                      </a>
+                <ul class="dropdown-menu" role="menu">
+                  <li>
           <li>
-                    <a href="">Home</a>
+                    <a href="{% url 'business' %}">Business</a>
                   </li>
             
                   <li>
-                    <a href="/accounts/password/change">Password</a>
+                    <a href="{% url 'technology' %}">Technology</a>
+                  </li>
+                   <li>
+                    <a href="{% url 'language' %}">Language</a>
                   </li>
                   <li>
-                    <a href="/logout">Logout</a>
+                    <a href="{% url 'contact' %}">Contact</a>
+                  </li>
+                  <li>
+                    <a href="/logout">Academics</a>
                   </li>
                 
                 </ul>
@@ -66,17 +76,17 @@
 
 <ul>            
   <div class="row">
-<div class="col-md-3" style="margin-top: -40px; float: right; margin-right: 400px">
+<div class="col-md-3" style="margin-top: -43px; float: right; margin-right: 400px">
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">Account
+                <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false" style="background-color: black; color: white">Account
                           <span class="caret"></span>
                       </a>
                 <ul class="dropdown-menu" role="menu">
                   <li>
-                    <a href="">Home</a>
+                    <a href="/">Home</a>
                   </li>
                   <li>
-                     <a href="">Create Article</a>
+                     <a href="">Create Course</a>
                   </li>
                   <li>
                     <a href="/accounts/password/change">Change Password</a>
@@ -91,6 +101,7 @@
 </div>
 </div>
 </div>
+
 
 <div class="text">
   <span id="span"></span>

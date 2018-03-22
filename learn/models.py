@@ -27,6 +27,9 @@ class Course(models.Model):
     category = models.CharField(max_length = 100)
     course = models.ForeignKey('Category', related_name='modules',default=1)
     pic = models.ImageField(upload_to = "pics/",null = True)
+    pdf = models.FileField(upload_to='pdf')
+    
+
 
     class Meta:
         ordering = ('-created',)
@@ -59,3 +62,16 @@ class Category(models.Model):
 
     def delete_category(self):
         self.delete()
+
+class Post(models.Model):
+    user = models.ForeignKey(Course, on_delete=models.CASCADE,default=1)
+    post = models.TextField(max_length=100)
+    # neighborhood = models.ForeignKey(Neighborhood,null=True)
+    image = models.ImageField(upload_to='posts/',null=True,blank=True)
+    date = models.DateTimeField(auto_now_add=True,null= True)
+    location = models.CharField(max_length=100)
+
+
+
+    def __str__(self):
+      return self.post
