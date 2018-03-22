@@ -1,54 +1,23 @@
- <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="/">E-learning</a>
-          <a class="navbar-brand" href="{% url 'course_list' %}">dashboard</a>
-          <a class="navbar-brand" href="{% url 'about' %}">about</a>
-           <div class="col-sm-6 col-md-6" style="margin-left: 220px; margin-top: -40px">
-            {% if user.is_authenticated %}
-            <ul>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">categories
-                          <span class="caret"></span>
-                      </a>
-                <ul class="dropdown-menu" role="menu">
-                  <li>
-                    <a href="{% url 'business' %}">Business</a>
-                  </li>
-                  <li>
-                     <a href="">Academics</a>
-                  </li>
-                  <li>
-                    <a href="{% url 'technology' %}">Technology</a>
-                  </li>
-                  <li>
-                    <a href="{% url 'language' %}">Language</a>
-                  </li>
-                   <li>
-                    <a href="/logout">Catalogue</a>
-                  </li>
-                  
-                </ul>
-              </li>
-            </ul>
-            {% else %}
-            <li>
-              <a class='btn btn-default' href="/accounts/login">Login</a>
-            </li>
-
-            {% endif %}
-            
-          </div>
-      </div>
-      <!-- search form end -->
 
 
-      </div>
 
-      <!-- Adding a search form  -->
-      <div class="col-sm-4 col-md-4 navbar-right" style="margin-top: -50px">
+  <div class="nav">
 
-        <form class="navbar-form" role="search" action="{% url 'search_results' %}">
+  <h1 title="E-learning" style="margin-top: -1px">
+    <span class="span">E-</span>
+    <span>l</span>
+    <span>e</span>
+    <span>a</span>
+    <span>r</span>
+    <span>n</span>
+    
+   
+
+  </h1>
+ <!-- Adding a search form  -->
+      <div class="col-sm-4 col-md-4 navbar-right"  ">
+
+        <form class="navbar-form" role="search" action="{% url 'search_results' %}" style="margin-left: -1100px; margin-top: 20px">
 
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Search Course" name="category">
@@ -59,9 +28,45 @@
 
         </form>
         <!--The search form above-->
-    <div class="col-sm-6 col-md-6" style="margin-left: 210px;margin-top: -40px">
-            {% if user.is_authenticated %}
-            <ul>
+  <ul >
+    <div class="row" style="margin-top: -30px;">
+<div class="col-md-3">
+    <li><a href="/">About</a></li>
+  </div>
+  <div class="row">
+<div class="col-md-3">
+    <li><a href="/">Dashboard</a>
+      
+    </li>
+  </div>
+  <div class="row">
+<div class="col-md-3">
+    <li><a href="#">Account</a>
+      <div class="child">
+        <ul>
+          <li>
+                    <a href="">Home</a>
+                  </li>
+            
+                  <li>
+                    <a href="/accounts/password/change">Password</a>
+                  </li>
+                  <li>
+                    <a href="/logout">Logout</a>
+                  </li>
+                
+                </ul>
+              </li>
+            </ul>
+        </ul>
+      </div> 
+    </li>
+  </ul>
+</div>
+
+<ul>            
+  <div class="row">
+<div class="col-md-3" style="margin-top: -40px; float: right; margin-right: 400px">
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">Account
                           <span class="caret"></span>
@@ -79,22 +84,221 @@
                   <li>
                     <a href="/logout">Logout</a>
                   </li>
-                   <li>
-                    <a href="/logout">Catalogue</a>
-                  </li>
-                  
                 </ul>
               </li>
             </ul>
-            {% else %}
-            <li>
-              <a class='btn btn-default' href="/accounts/login">Login</a>
-            </li>
 
-            {% endif %}
-            
-          </div>
-      </div>
-      <!-- search form end -->
-    </div>
-  </nav>
+</div>
+</div>
+</div>
+
+<div class="text">
+  <span id="span"></span>
+  <span id="spanAr"></span>
+</div>
+
+</ul>
+</div>
+<style>
+  * {
+  padding:0;
+  margin:0;
+  box-sizing: border-box;
+ font-family: 'Julius Sans One', sans-serif;
+  list-style:none;
+  
+
+}
+body {
+  text-align:center;
+  
+
+  
+}
+.nav {
+  width:100%;
+  background:#000;
+  height:60px;
+  box-shadow: 0px 0px 8px 1px;
+
+  
+
+  
+
+}
+
+.nav h1 {
+  max-width: 20%;
+  min-width:180px;
+  height: 60px;
+  line-height:60px;
+  text-transform:uppercase;
+  color:#fff;
+  padding: 0 0 0 15px;
+  float:left;
+  overflow:hidden;
+  font-weight: 100;
+  font-size:30px;
+  color: rgba(255, 255, 255, 0.28);
+  
+  
+
+}
+
+.nav h1 span {
+  transition: .8s;
+  
+}
+.span {
+  text-shadow: 0 0 3px #FFf, 0 0 5px #fFF, 0 0 8px #FFf, 0 0 9px #fFF, 0 0 20px #FFf;
+  color:#fff;
+}
+
+
+.nav > ul {
+  list-style:none;
+  float:right;
+  margin-right:10%
+}
+.nav > ul > li {
+  display:inline-block;
+  height:60px;
+  line-height:30px;
+  padding:15px 20px;
+  position:relative;
+  transition: .5s;
+}
+.nav > ul > li:hover
+
+{
+  background:#ec7b01;
+  
+  
+}
+.nav > ul > li:hover a {
+  color:#000;
+  font-size:1.2em;
+}
+.nav a {
+  text-decoration:none;
+  color:#fff;
+  text-transform:capitalize;
+    transition: .5s;
+
+  
+}
+.nav .child {
+  list-style:none;
+  width:110%;
+  position: absolute;
+  left:0;
+  top:60px;
+  max-height:0;
+  overflow:hidden;
+  transition:.5s;
+  background:#000;
+   margin-top: -40px;
+  
+  
+  
+}
+.child ul li {
+  padding:10px 5px;
+  color:#fff;
+   transition: .5s;
+  text-transform:capitalize;
+
+
+  
+}
+.child ul li:hover {
+  background:#031428;
+  color:#000;
+  font-size:1.2em;
+  cursor:pointer;
+  
+}
+
+
+.nav ul li:hover > .child {
+      max-height:150px;
+  box-shadow: 0px 1px 8px 1px
+  
+  
+
+}
+.text {
+  width:100%;
+  z-index:-5;
+  position:absolute;
+  left:0;
+  top:60px;
+  animation-name: samer;
+  animation-duration: 1s;
+}
+@keyframes samer {
+from {top:110px;opacity:0;}
+to {top:60;opacity:1;}
+}
+#span {
+  display:block;
+  margin-top:30px;
+  color:#e47700;
+  font-size: xx-large;
+}
+#spanAr {
+  display:block;
+  color:#e47700;
+  font-size: xx-large;
+
+}
+
+</style>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ 
+    <script src="https://ucarecdn.com/libs/widget/3.2.2/uploadcare.min.js" charset="utf-8"></script>
+
+<script >
+  
+(function spanMove() {
+  $(".nav h1 .span").each(function () {
+    if(!$(this).is(':last-child')) {
+      $(this).delay(500).animate({color:"#f00",},function () {
+       $(this).removeClass('span').next().addClass('span');
+        spanMove();
+      });
+        
+    } else {
+      
+      $(this).delay(500).animate({color:"#f00"},function () {
+        $(".nav h1 span").eq(0).addClass('span').siblings().removeClass('span');
+        spanMove();
+      });
+      
+    }
+  });
+  
+}());
+// var myText = "welcome to Simplified e-learning",
+//     myTextAr = "welcome to Simplified e-learning",
+//     i = 0,
+//     a = 0,
+//     typ = setInterval(function samer () {
+//     document.getElementById('span').textContent += myText[i];
+//       i++;
+//       if (i >= myText.length) {
+//         clearInterval(typ);
+//       }
+//   }, 100),
+//       typAr = setInterval(function samerAr () {
+//     document.getElementById('spanAr').textContent += myTextAr[a];
+//       a++;
+//       if (a >= myTextAr.length) {
+//         clearInterval(typAr);
+//       }
+//   }, 100)
+      
+
+console.log(myText.length);
+
+</script>

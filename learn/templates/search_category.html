@@ -5,7 +5,7 @@
 
   <div class="row">
     {% if courses %}
-      <h2>Found {{ courses|length }} of searched term {{message}}</h2>
+      <h4 style="margin-top: -100px">Found  of searched term {{message}}</h4>
     {% else %}
       <h2> Found 0 courses for the search term {{message}}</h2>
     {% endif %}
@@ -14,13 +14,45 @@
 
   <div class="row">
 
-  {% if courses %}
-    {% for course in courses %}
-      <div class="col-sm-6 col-md-12">
-          <h1>{{course.category}}</h1>
+  
+      
+          <h1><img src="{{course.pic.url}}"></h1>
       </div>
-    {% endfor %}
-  {% endif %}
+
   </div>
 </div>
+{% if courses %}
+    {% for course in courses %}
+    <div class="row">
+<div class="col-md-4"><br>
+<figure>
+<img src="{{course.pic.url}}" style="width: 400px; height: 300px; position: relative;" alt="" />
+<figcaption><a href="/">
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse corporis nihil at sed exercitationem labore, aperiam maxime magni molestias libero inventore adipisci distinctio pariatur odit, eveniet, nulla quae, explicabo ipsa.</a></figcaption></figure>
+</div>
+
+    {% endfor %}
+  {% endif %}
+
+<style >
+  figure {
+  background: red;
+ overflow: hidden;
+  height: 300px;
+  width: 400px;
+}
+/* Start Frame */
+figcaption {
+  background: rgba(255,255,255,.65);
+  opacity: .75;
+  margin-top: -100px;
+  transition: margin-top 3s;
+  
+}
+/* End Frame */
+figure:hover figcaption{
+  margin-top: -150px;
+}
+</style>
+
 {% endblock %}

@@ -26,6 +26,7 @@ class Course(models.Model):
     stripe_id = models.CharField(max_length=255, blank=True)
     category = models.CharField(max_length = 100)
     course = models.ForeignKey('Category', related_name='modules',default=1)
+    pic = models.ImageField(upload_to = "pics/",null = True)
 
     class Meta:
         ordering = ('-created',)
