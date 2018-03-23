@@ -88,18 +88,23 @@ def search_results(request):
 
 
 class GeneratePDF(View):
-     def get(self, request, *args, **kwargs):
-         data = {
-              'today': datetime.date.today(),
-              'amount': 39.99,
-             'customer_name': 'Cooper Mann',
-             'order_id': 1233434,
-         }
-         html = template.render(context)
-         pdf = render_to_pdf('pdf/invoice.html', data)
-         return HttpResponse(pdf, content_type='application/pdf')
-
-
+   def get(self, request, *args, **kwargs):
+       template = get_template('invoice.html')
+       context = {
+           
+       }
+       html = template.render(context)
+       pdf = render_to_pdf('invoice.html', context)
+       if pdf:
+            response = HttpResponse(pdf, content_type='application/pdf')
+            filename = "invoice_%s.pdf" %("12341231")
+            content = "inline; filename='%s'" %(filename)
+            download = request.GET.get("download")
+            if download:
+                content = "attachment; filename='%s'" %(filename)
+            response['Content-Disposition'] = content
+            return response
+       return HttpResponse("Not found")
 
 @login_required(login_url='/accounts/login/')
 def post(request):
