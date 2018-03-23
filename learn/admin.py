@@ -6,6 +6,7 @@ from .models import Course, Category,Subject,Post
 admin.site.register(Course)
 admin.site.register(Category)
 admin.site.register(Subject)
+admin.site.register(Post)
 
 
 

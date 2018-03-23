@@ -14,8 +14,9 @@ urlpatterns=[
     url(r'^language/', views.language, name='language'),
     url(r'^contact/', views.contact, name='contact'),
     url(r'^technology/', views.technology, name='technology'),
-    url(r'^pdf/$',GeneratePDF.as_view(),name="generate"),
-    url(r'^new/post$', views.new_post, name='new_post'),
+    url(r'^pdf/$',GeneratePDF.as_view(),name="pdf"),
+    url(r'^new/post/$', views.new_post, name='new_post'),
+
 
     
 ]

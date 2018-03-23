@@ -112,12 +112,14 @@ def post(request):
 def new_post(request):
 
     current_user = request.user
+    image_post = Post.objects.all()
+    print(image_post)
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
             post.save()
-            return redirect('index') 
+            return redirect('new_post') 
     else:
         form = PostForm()
-    return render(request, 'new_post.html', {"form": form})
+    return render(request, 'new_post.html', {"form": form,"image_post":image_post})

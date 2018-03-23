@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load staticfiles%}
+{% load bootstrap3 %}
+{% block content %}
+{{block.super}}
+<div class="container" style="margin-left: 100PX">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        
+    </div>
+    <div class="col-md-4">
+    	{% for item in image_post %}
+        <img src="{{item.image.url}}">
+
+{% endfor %}
+
+    </div>
+
+
+</div>
+
+{% endblock %}

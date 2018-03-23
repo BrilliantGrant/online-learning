@@ -3,19 +3,49 @@
 {% load bootstrap3 %}
 {% block content %}
 {{block.super}}
-<div class="container">
-    <div class="col-md-3"></div>
-    <div class="col-md-7">
-        <form method="post" enctype="multipart/form-data" style="margin-top: 100px">
+<div class="well" style="margin-left: 100px; width: 600px; height: 500px; margin-top: 50px; background-color: #031428; color: white">
+  
+    <div class="col-md-6" style="margin-left: 150px">
+        <form method="post" enctype="multipart/form-data" style="margin-top: 40px; margin-left: -50px">
             {% csrf_token %}
             {% bootstrap_form form%}
-            <input type="submit" class="btn btn-primary btn-sm" value="Submit">
+            <input type="submit" class="btn btn-primary btn-sm" value="Submit" style="color: white; font-weight: bold;">
             <input type="hidden" name="next" value="{{next}}">
 
         </form>
     </div>
-    <div class="col-md-3"></div>
+</div>
+    </div>
+
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<div class="w3-container" style="float: right; margin-top: -450px">
+  <h2>Recent Posts</h2>
+  {% for item in image_post %}
+  <div class="w3-card-4" style="width:300px">
+    <img src="{{item.image.url}}" alt="Norway" style="width:300px">
+    <div class="w3-container w3-center">
+      <strong><p> {{item.user}}</p></strong>
+  </div><hr>
+      <div class="w3-container w3-center">
+      <p> {{item.date | date}}</p><p> {{item.post}}</p>
+
+
+    </div>
+  </div>
+</div>
+{% endfor %}
+</body>
+</html>
+    </div>
+</div>
 
 </div>
+
+
 
 {% endblock %}
